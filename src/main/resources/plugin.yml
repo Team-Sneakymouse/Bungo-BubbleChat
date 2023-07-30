@@ -1,0 +1,4 @@
+name: BubbleChat
+version: '${project.version}'
+main: ca.bungo.bubblechat.BubbleChat
+api-version: '1.20'

@@ -1,0 +1,8 @@
+#Simple data on the Text Displays:
+display-settings:
+  background:
+    r: 255
+    g: 255
+    b: 255
+  text-color:
+    hex: 00FF00
