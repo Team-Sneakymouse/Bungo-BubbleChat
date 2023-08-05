@@ -1,6 +1,7 @@
 package ca.bungo.bubblechat.events;
 
 import ca.bungo.bubblechat.BubbleChat;
+import ca.bungo.bubblechat.commands.CommandMuteUnmute;
 import ca.bungo.bubblechat.types.ChatBubble;
 import ca.bungo.bubblechat.utility.ChatUtility;
 import io.papermc.paper.event.player.AsyncChatEvent;
@@ -17,6 +18,11 @@ public class ChatEvent implements Listener {
         Player player = event.getPlayer();
         String message = ((TextComponent)event.message()).content();
         event.setCancelled(true);
+
+        if(CommandMuteUnmute.isPlayerMuted(player)){
+            player.sendMessage(ChatUtility.formatMessage("&4You have been muted!"));
+            return;
+        }
 
         if(!BubbleChat.instance.chatManager.playerChatBubbles.containsKey(player)){
             ChatBubble chatBubble = new ChatBubble(player, message);

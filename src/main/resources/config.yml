@@ -6,3 +6,7 @@ display-settings:
     b: 255
   text-color:
     hex: 00FF00
+muted-players:
+  uuid:
+    username: name
+    mute-reason: example

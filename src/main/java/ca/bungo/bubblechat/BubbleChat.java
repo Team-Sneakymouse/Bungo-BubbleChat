@@ -1,6 +1,7 @@
 package ca.bungo.bubblechat;
 
 import ca.bungo.bubblechat.commands.CommandCleanTextDisplays;
+import ca.bungo.bubblechat.commands.CommandMuteUnmute;
 import ca.bungo.bubblechat.events.ChatEvent;
 import ca.bungo.bubblechat.managers.ChatManager;
 import ca.bungo.bubblechat.types.ChatBubble;
@@ -23,6 +24,7 @@ public final class BubbleChat extends JavaPlugin {
 
         this.getServer().getPluginManager().registerEvents(new ChatEvent(), this);
         this.getServer().getCommandMap().register("bubblechat", new CommandCleanTextDisplays("cleanchat"));
+        this.getServer().getCommandMap().register("bubblechat", new CommandMuteUnmute("mute"));
     }
 
     @Override
