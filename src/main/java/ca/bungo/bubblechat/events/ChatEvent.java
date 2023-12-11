@@ -17,7 +17,7 @@ public class ChatEvent implements Listener {
     public void onChat(AsyncChatEvent event){
         Player player = event.getPlayer();
         String message = ((TextComponent)event.message()).content();
-        event.setCancelled(true);
+        //event.setCancelled(true);
 
         if(CommandMuteUnmute.isPlayerMuted(player)){
             player.sendMessage(ChatUtility.formatMessage("&4You have been muted!"));
