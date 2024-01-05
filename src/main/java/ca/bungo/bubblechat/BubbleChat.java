@@ -23,7 +23,7 @@ public final class BubbleChat extends JavaPlugin {
         this.chatManager = new ChatManager();
 
         this.getServer().getPluginManager().registerEvents(new ChatEvent(), this);
-        this.getServer().getCommandMap().register("bubblechat", new CommandCleanTextDisplays("cleanchat"));
+        //this.getServer().getCommandMap().register("bubblechat", new CommandCleanTextDisplays("cleanchat"));
         this.getServer().getCommandMap().register("bubblechat", new CommandMuteUnmute("mute"));
     }
 
