@@ -3,7 +3,6 @@ package ca.bungo.bubblechat.types;
 import ca.bungo.bubblechat.BubbleChat;
 import ca.bungo.bubblechat.utility.ChatUtility;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.TextColor;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -37,6 +36,8 @@ public class ChatBubble {
         location.setY(location.getY() + this.player.getEyeHeight() * 0.85);
 
         this.display = this.player.getWorld().spawn(location, TextDisplay.class);
+
+        this.display.addScoreboardTag("ChatBubble");
 
         updateSettings();
 
