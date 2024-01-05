@@ -44,7 +44,7 @@ public class ChatBubble {
 
         this.display.setBillboard(Display.Billboard.CENTER);
         this.display.setLineWidth(150);
-        this.display.setSeeThrough(true);
+        this.display.setSeeThrough(false);
         this.display.setDefaultBackground(false);
         this.display.setShadowed(false);
         this.display.setBrightness(new Display.Brightness(15, 15));
