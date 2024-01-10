@@ -19,6 +19,8 @@ public class ChatEvent implements Listener {
         String message = ((TextComponent)event.message()).content();
         //event.setCancelled(true);
 
+        if(message.startsWith("((") || (message.startsWith("(") && message.endsWith(")"))) return;
+
         if(CommandMuteUnmute.isPlayerMuted(player)){
             player.sendMessage(ChatUtility.formatMessage("&4You have been muted!"));
             return;
