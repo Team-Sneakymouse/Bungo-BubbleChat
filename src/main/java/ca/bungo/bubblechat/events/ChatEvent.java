@@ -9,18 +9,23 @@ import net.kyori.adventure.text.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 
 public class ChatEvent implements Listener {
 
-    @EventHandler
+    @EventHandler (priority = EventPriority.MONITOR)
     public void onChat(AsyncChatEvent event){
         if (event.isCancelled()) return;
         Player player = event.getPlayer();
         String message = ((TextComponent)event.message()).content();
         //event.setCancelled(true);
 
-        if(message.startsWith("((") || (message.startsWith("(") && message.endsWith(")"))) return;
+        if(message.startsWith("((") ||
+            (message.startsWith("(") && message.endsWith(")")) ||
+            message.startsWith("&8") ||
+            message.startsWith("<dark_gray>")) 
+            return;
 
         if(CommandMuteUnmute.isPlayerMuted(player)){
             player.sendMessage(ChatUtility.formatMessage("&4You have been muted!"));
