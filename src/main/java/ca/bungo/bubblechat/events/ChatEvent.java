@@ -14,9 +14,8 @@ import org.bukkit.event.Listener;
 
 public class ChatEvent implements Listener {
 
-    @EventHandler (priority = EventPriority.HIGHEST)
+    @EventHandler (priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void onChat(AsyncChatEvent event){
-        if (event.isCancelled()) return;
         Player player = event.getPlayer();
         String message = ((TextComponent)event.message()).content();
         //event.setCancelled(true);
