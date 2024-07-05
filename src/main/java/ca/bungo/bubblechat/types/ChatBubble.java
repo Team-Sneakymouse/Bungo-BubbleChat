@@ -3,6 +3,7 @@ package ca.bungo.bubblechat.types;
 import ca.bungo.bubblechat.BubbleChat;
 import ca.bungo.bubblechat.utility.ChatUtility;
 import net.kyori.adventure.text.Component;
+import net.minecraft.server.level.ServerPlayer;
 import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -69,8 +70,13 @@ public class ChatBubble {
 
         this.messages.add(message);
         this.display.text(this.makeMessage());
+        loadClientsidedMessages(this.makeMessage());
 
         return messageId;
+    }
+
+    public void loadClientsidedMessages(Component message){
+
     }
 
     public boolean removeMessage(int id) {
@@ -87,6 +93,7 @@ public class ChatBubble {
 
         if (message != null) {
             this.display.text(message);
+            loadClientsidedMessages(this.makeMessage());
             return false;
         } else {
             return true;

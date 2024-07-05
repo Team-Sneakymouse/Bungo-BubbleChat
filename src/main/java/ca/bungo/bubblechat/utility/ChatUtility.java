@@ -42,4 +42,11 @@ public final class ChatUtility {
         return MiniMessage.miniMessage().deserialize(message);
     }
 
+    public String koboldifyer(String message){
+        return message
+                .replaceAll("[\\w']+", "kobold")
+                .replaceAll("\\. k", ". K")
+                .replaceFirst("^k", "K");
+    }
+
 }

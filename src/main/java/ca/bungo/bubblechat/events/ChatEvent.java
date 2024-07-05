@@ -18,6 +18,7 @@ public class ChatEvent implements Listener {
     public void onChat(AsyncChatEvent event){
         Player player = event.getPlayer();
         String message = ((TextComponent)event.message()).content();
+
         //event.setCancelled(true);
 
         if(message.startsWith("((") ||
