@@ -4,7 +4,9 @@ import ca.bungo.bubblechat.BubbleChat;
 import ca.bungo.bubblechat.commands.CommandMuteUnmute;
 import ca.bungo.bubblechat.types.ChatBubble;
 import ca.bungo.bubblechat.utility.ChatUtility;
+import io.papermc.paper.chat.ChatRenderer;
 import io.papermc.paper.event.player.AsyncChatEvent;
+import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -20,6 +22,19 @@ public class ChatEvent implements Listener {
         String message = ((TextComponent)event.message()).content();
 
         //event.setCancelled(true);
+
+
+        ChatRenderer renderer = event.renderer();
+        event.renderer((source, displayName, content, viewer) ->{
+            Component modifiedText = renderer.render(source, displayName, content, viewer);
+
+            if(!(viewer instanceof Player viewingPlayer)) return modifiedText;
+
+            //ToDo: Read Modified Text & Create Localized Chat Bubble for the viewingPlayer
+
+            return modifiedText;
+        });
+
 
         if(message.startsWith("((") ||
             (message.startsWith("(") && message.endsWith(")")) ||
