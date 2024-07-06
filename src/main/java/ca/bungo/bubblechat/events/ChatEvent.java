@@ -8,11 +8,15 @@ import io.papermc.paper.chat.ChatRenderer;
 import io.papermc.paper.event.player.AsyncChatEvent;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ChatEvent implements Listener {
 
@@ -22,6 +26,7 @@ public class ChatEvent implements Listener {
         String message = ((TextComponent)event.message()).content();
 
         //event.setCancelled(true);
+        Map<String, String> localMessage = new HashMap<>();
 
 
         ChatRenderer renderer = event.renderer();
@@ -30,8 +35,13 @@ public class ChatEvent implements Listener {
 
             if(!(viewer instanceof Player viewingPlayer)) return modifiedText;
 
-            //ToDo: Read Modified Text & Create Localized Chat Bubble for the viewingPlayer
+            String rawMessage = PlainTextComponentSerializer.plainText().serialize(modifiedText);
+            if(rawMessage.startsWith("<"))
+                rawMessage = rawMessage.replace("<" + player.getName() + "> ", "");
+            else if(rawMessage.contains(": "))
+                rawMessage = rawMessage.replaceFirst(".*: ", "");
 
+            localMessage.put(viewingPlayer.getUniqueId().toString(), rawMessage);
             return modifiedText;
         });
 
