@@ -68,6 +68,7 @@ publishing {
                 name.set("Bungo-BubbleChat")
                 description.set("Paper plugin for chat bubbles above players.")
                 url.set("https://github.com/Team-Sneakymouse/Bungo-BubbleChat")
+                properties.put("sneakyrp.deployment.type", "paper-plugin")
                 scm {
                     url.set("https://github.com/Team-Sneakymouse/Bungo-BubbleChat")
                     connection.set("scm:git:https://github.com/Team-Sneakymouse/Bungo-BubbleChat.git")
