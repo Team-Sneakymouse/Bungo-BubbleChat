@@ -36,7 +36,7 @@ paperweight.reobfArtifactConfiguration = io.papermc.paperweight.userdev.ReobfArt
 
 dependencies {
     paperweight.paperDevBundle("1.20.6-R0.1-SNAPSHOT")
-    compileOnly("io.github.team-sneakymouse:sneakyutils:2026.10.18-4b5831b0b997")
+    compileOnly("io.github.team-sneakymouse:sneakyutils:2026.10.18-657d452bd6f4")
 }
 
 java {
