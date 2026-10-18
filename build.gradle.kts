@@ -29,23 +29,27 @@ repositories {
     mavenCentral()
     maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://oss.sonatype.org/content/repositories/snapshots")
+    maven("https://maven.sneakyrp.com/releases")
 }
 
 paperweight.reobfArtifactConfiguration = io.papermc.paperweight.userdev.ReobfArtifactConfiguration.MOJANG_PRODUCTION
 
 dependencies {
     paperweight.paperDevBundle("1.20.6-R0.1-SNAPSHOT")
+    compileOnly("io.github.team-sneakymouse:sneakyutils:2026.10.18-4b5831b0b997")
 }
 
 java {
-    toolchain.languageVersion = JavaLanguageVersion.of(21)
+    // Compile with 25 so sneakyutils (classfile 69) is readable; paperweight setup
+    // must be run with a JDK 21 host so remapping stays on ASM that understands MC.
+    toolchain.languageVersion = JavaLanguageVersion.of(25)
     withSourcesJar()
     withJavadocJar()
 }
 
 tasks {
     compileJava {
-        options.release = 21
+        options.release = 25
     }
     javadoc {
         options.encoding = Charsets.UTF_8.name()
